@@ -1,0 +1,208 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Mood-Based Music (local catalog) UI in existing React/Tailwind/Shadcn app",
+  "requirements": [
+    {
+      "id": "REQ-9",
+      "summary": "Add a new Mood Music section (tab) where users select a mood, browse tracks, play/pause audio, and optionally view latest tracks first.",
+      "acceptanceCriteria": [
+        "The app UI includes a clearly labeled entry point for \"Mood Music\" (e.g., a new tab alongside existing tabs).",
+        "The user can select a mood (at minimum: Happy, Calm, Sad, Energetic) and see a track list update based on the selected mood.",
+        "The user can play/pause a selected track using standard in-browser audio playback controls.",
+        "A \"Latest\" mode exists that sorts/shows tracks with newest first (based on track metadata provided by the app).",
+        "All user-facing text in this feature is in English."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire a new \"Mood Music\" tab into the existing Shadcn Tabs navigation (entry point alongside current tabs), render the new MoodMusicPanel, and ensure it is reachable without breaking existing tabs/auth/profile greeting. Verify the component's usage instructions before implementing (Shadcn UI composition)."
+        },
+        {
+          "path": "frontend/src/features/mood-music/MoodMusicPanel.tsx",
+          "operation": "create",
+          "description": "Create the main Mood Music UI panel: mood selector (Happy/Calm/Sad/Energetic), track list that filters by selected mood, an explicit \"Latest\" mode toggle to sort by date newest-first, and an in-browser audio player with play/pause controls for the selected track. Use existing Shadcn UI components (e.g., Card, Button, Tabs/Toggle/Badge where available) and theme tokens. Verify the component's usage instructions before implementing (shadcn-ui)."
+        },
+        {
+          "path": "frontend/src/features/mood-music/useAudioPlayer.ts",
+          "operation": "create",
+          "description": "Add a small React hook to manage selected track, play/pause state, and safe switching between tracks using the built-in HTMLAudioElement API (no external streaming). Keep the hook UI-agnostic so MoodMusicPanel can render standard audio controls. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/features/mood-music/components/TrackList.tsx",
+          "operation": "create",
+          "description": "Create a presentational TrackList component used by MoodMusicPanel to render filtered/sorted tracks, highlight the currently selected track, and expose callbacks for play/pause/select. Compose existing Shadcn UI components for consistent styling. Verify the component's usage instructions before implementing (shadcn-ui)."
+        },
+        {
+          "path": "frontend/src/features/mood-music/components/MoodSelector.tsx",
+          "operation": "create",
+          "description": "Create a mood selection UI component used by MoodMusicPanel that shows each mood as a selectable card/button with its icon and label, preserving icon aspect ratio. Compose existing Shadcn UI components. Verify the component's usage instructions before implementing (shadcn-ui)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "summary": "Bundle a small local music catalog as frontend static assets and expose metadata (title/artist/moods/date) to support filtering and Latest sorting without third-party APIs.",
+      "acceptanceCriteria": [
+        "At least 8 sample tracks are available across the moods (can be shared across moods), stored as static assets under the frontend public directory (e.g., frontend/public/assets/music).",
+        "Each track displayed in the UI includes at minimum: title, artist (or \"Unknown Artist\"), mood tags, and a date field used for \"Latest\" ordering.",
+        "No third-party music APIs are required for the feature to function."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/music/mood-happy-01.mp3",
+          "operation": "create",
+          "description": "Add a bundled local audio sample file for the Mood Music catalog (static frontend asset; no external streaming)."
+        },
+        {
+          "path": "frontend/public/assets/music/mood-happy-02.mp3",
+          "operation": "create",
+          "description": "Add a bundled local audio sample file for the Mood Music catalog (static frontend asset; no external streaming)."
+        },
+        {
+          "path": "frontend/public/assets/music/mood-calm-01.mp3",
+          "operation": "create",
+          "description": "Add a bundled local audio sample file for the Mood Music catalog (static frontend asset; no external streaming)."
+        },
+        {
+          "path": "frontend/public/assets/music/mood-calm-02.mp3",
+          "operation": "create",
+          "description": "Add a bundled local audio sample file for the Mood Music catalog (static frontend asset; no external streaming)."
+        },
+        {
+          "path": "frontend/public/assets/music/mood-sad-01.mp3",
+          "operation": "create",
+          "description": "Add a bundled local audio sample file for the Mood Music catalog (static frontend asset; no external streaming)."
+        },
+        {
+          "path": "frontend/public/assets/music/mood-sad-02.mp3",
+          "operation": "create",
+          "description": "Add a bundled local audio sample file for the Mood Music catalog (static frontend asset; no external streaming)."
+        },
+        {
+          "path": "frontend/public/assets/music/mood-energetic-01.mp3",
+          "operation": "create",
+          "description": "Add a bundled local audio sample file for the Mood Music catalog (static frontend asset; no external streaming)."
+        },
+        {
+          "path": "frontend/public/assets/music/mood-energetic-02.mp3",
+          "operation": "create",
+          "description": "Add a bundled local audio sample file for the Mood Music catalog (static frontend asset; no external streaming)."
+        },
+        {
+          "path": "frontend/src/features/mood-music/catalog.ts",
+          "operation": "create",
+          "description": "Define the local music catalog metadata used by the UI: track id, title, artist (fallback to \"Unknown Artist\" when missing), mood tags (Happy/Calm/Sad/Energetic), and a date field (e.g., ISO string) used for \"Latest\" ordering, plus the static asset URL pointing to files under frontend/public/assets/music. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/features/mood-music/types.ts",
+          "operation": "create",
+          "description": "Add TypeScript types for Mood, Track, and sort mode (e.g., Latest vs Default) to ensure consistent filtering/sorting logic across the Mood Music feature. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "summary": "Update header branding and labels to reflect Mood Based Music while keeping existing Internet Identity auth and profile greeting behavior intact.",
+      "acceptanceCriteria": [
+        "The app title and subtitle shown in the header are updated to match the mood-based music focus (English text).",
+        "Internet Identity login/logout still works via the existing LoginButton, without modifying any immutable hook files.",
+        "If the user is authenticated and has a profile, the header still greets the user by name as it does today."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Update header title/subtitle copy to Mood Based Music branding (English), retain the existing LoginButton usage and profile greeting (\"Welcome, {name}\") behavior, and avoid modifying any immutable hook files. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/auth/ProfileSetupDialog.tsx",
+          "operation": "modify",
+          "description": "Update profile setup dialog title/description copy to match the Mood Based Music branding (English) while keeping the existing profile setup flow intact. Verify the component's usage instructions before implementing (Shadcn Dialog composition)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-12",
+      "summary": "Ensure Mood Music UI uses existing Tailwind/Shadcn design system and current theme variables without introducing blue/purple as primary branding.",
+      "acceptanceCriteria": [
+        "Mood Music components use existing Shadcn UI components (e.g., Card, Button, Tabs) and existing theme tokens from CSS variables.",
+        "No new primary branding is introduced that relies on blue/purple as the dominant color."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/features/mood-music/MoodMusicPanel.tsx",
+          "operation": "modify",
+          "description": "Ensure styling is done via Tailwind classes referencing existing theme tokens (bg-card, text-foreground, border-border, etc.) and composed Shadcn UI components; avoid introducing new blue/purple primary brand styling in the Mood Music UI. Verify the component's usage instructions before implementing (shadcn-ui)."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Adjust any new Mood Music tab icon/label styling to align with existing theme tokens and keep consistent with the current design system (no blue/purple-dominant branding changes). Verify the component's usage instructions before implementing (shadcn-ui Tabs composition)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-13",
+      "summary": "Add a Mood Music-specific in-app info notice clarifying playback uses bundled/local audio files while keeping the existing speech InfoNotice accurate and present.",
+      "acceptanceCriteria": [
+        "The Mood Music section includes an English info note stating that playback is from app-bundled audio files and does not use external streaming services.",
+        "The existing speech InfoNotice remains accurate and is not removed (it may be repositioned if needed)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/features/mood-music/components/MoodMusicInfoNotice.tsx",
+          "operation": "create",
+          "description": "Create a small info notice component for the Mood Music section (English copy) stating playback uses app-bundled/local audio files and does not use external streaming services. Compose the existing Shadcn Alert component for consistent styling. Verify the component's usage instructions before implementing (shadcn-ui)."
+        },
+        {
+          "path": "frontend/src/features/mood-music/MoodMusicPanel.tsx",
+          "operation": "modify",
+          "description": "Render the new MoodMusicInfoNotice within the Mood Music UI in a visible location (e.g., near the mood selector or track list) while keeping user-facing copy in English. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Ensure the existing speech InfoNotice component remains present and accurate in the app layout (it may be repositioned if needed) and is not removed when adding Mood Music UI. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-14",
+      "summary": "Add and render the generated mood icon images as static assets in the Mood Music mood selector UI with crisp, non-stretched display.",
+      "acceptanceCriteria": [
+        "All images listed in imageRequirements.required are checked into frontend/public/assets/generated.",
+        "Mood selection UI visually displays the corresponding mood icon next to the mood label.",
+        "Icons render crisply on common screen densities and do not appear stretched (correct aspect ratio preserved)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/generated/mood-happy.dim_256x256.png",
+          "operation": "create",
+          "description": "Check in the generated mood icon image as a static frontend asset."
+        },
+        {
+          "path": "frontend/public/assets/generated/mood-calm.dim_256x256.png",
+          "operation": "create",
+          "description": "Check in the generated mood icon image as a static frontend asset."
+        },
+        {
+          "path": "frontend/public/assets/generated/mood-sad.dim_256x256.png",
+          "operation": "create",
+          "description": "Check in the generated mood icon image as a static frontend asset."
+        },
+        {
+          "path": "frontend/public/assets/generated/mood-energetic.dim_256x256.png",
+          "operation": "create",
+          "description": "Check in the generated mood icon image as a static frontend asset."
+        },
+        {
+          "path": "frontend/src/features/mood-music/components/MoodSelector.tsx",
+          "operation": "modify",
+          "description": "Render mood icons next to labels using the static assets at frontend/public/assets/generated/mood-happy.dim_256x256.png, frontend/public/assets/generated/mood-calm.dim_256x256.png, frontend/public/assets/generated/mood-sad.dim_256x256.png, and frontend/public/assets/generated/mood-energetic.dim_256x256.png, ensuring correct aspect ratio (e.g., object-contain) and crisp sizing across densities. Verify the component's usage instructions before implementing (shadcn-ui composition)."
+        }
+      ]
+    }
+  ]
+}

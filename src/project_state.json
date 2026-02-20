@@ -1,0 +1,170 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 7,
+  "summary": "Shift focus to creating a Mood Based Music app that plays music based on the user’s mood (with an emphasis on playing the latest music).",
+  "architectural_notes": [
+    "Frontend: React web client for audio capture and UX",
+    "Backend: Node.js service exposing endpoints for STT/TTS and API key handling",
+    "STT provider: Google Gemini API for speech-to-text",
+    "TTS provider: separate external API for text-to-speech"
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- Flat vector mood icon: happy face with sun motif, warm colors (mood-happy.dim_256x256.png)\n- Flat vector mood icon: calm face with crescent moon/cloud motif, soft neutral/teal colors (mood-calm.dim_256x256.png)\n- Flat vector mood icon: sad face with raindrop motif, muted colors (mood-sad.dim_256x256.png)\n- Flat vector mood icon: energetic face with lightning motif, bold warm colors (mood-energetic.dim_256x256.png)",
+  "existing_features": [
+    {
+      "id": "feature-implement-in-browser-audio-recording-from-the-user-s-current-device-microphone-desktop-laptop-mobile-using-standard-browser-media-apis-including-controls-to-start-pause-resume-if-supported-stop-and-preview-playback-of-the-recorded-audio-before-submission",
+      "title": "Implement in-browser audio recording from the user’s current device microphone (desktop/laptop/mobile) using standard browser media APIs, including controls to start, pause/resume (if supported), stop, and preview playback of the recorded audio before submission.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-provide-speech-to-text-transcription-in-the-client-using-browser-native-speech-recognition-capabilities-where-available-producing-an-editable-transcript-field-and-showing-partial-interim-results-during-dictation-when-supported",
+      "title": "Provide speech-to-text (transcription) in the client using browser-native speech recognition capabilities where available, producing an editable transcript field and showing partial/interim results during dictation when supported.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-provide-text-to-speech-playback-for-user-entered-text-using-browser-native-speech-synthesis-capabilities-where-available-including-controls-for-play-stop-and-basic-voice-rate-selection-when-supported",
+      "title": "Provide text-to-speech playback for user-entered text using browser-native speech synthesis capabilities where available, including controls for play/stop and basic voice/rate selection when supported.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-wire-the-frontend-to-the-backend-using-the-existing-internet-identity-login-flow-without-modifying-immutable-hook-files-so-users-can-sign-in-save-transcripts-and-view-their-saved-history",
+      "title": "Wire the frontend to the backend using the existing Internet Identity login flow (without modifying immutable hook files) so users can sign in, save transcripts, and view their saved history.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-coherent-distinctive-visual-theme-for-the-app-colors-typography-spacing-and-component-styling-and-apply-it-consistently-across-the-recording-transcription-tts-and-history-screens-avoid-blue-purple-as-primary-brand-colors",
+      "title": "Create a coherent, distinctive visual theme for the app (colors, typography, spacing, and component styling) and apply it consistently across the recording, transcription, TTS, and history screens. Avoid blue/purple as primary brand colors.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-explicit-configuration-and-messaging-that-external-node-js-services-google-gemini-api-speech-to-text-and-third-party-tts-apis-are-not-used-in-this-implementation-due-to-platform-constraints-ensure-user-facing-copy-remains-in-english",
+      "title": "Add explicit configuration and messaging that external Node.js services, Google Gemini API speech-to-text, and third-party TTS APIs are not used in this implementation due to platform constraints; ensure user-facing copy remains in English.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-when-the-authenticated-user-is-prompted-to-set-up-their-profile-name-prefill-the-profile-name-input-with-exactly-alhat-rutuja-so-it-can-be-saved-as-the-user-s-profile-name-in-the-app",
+      "title": "When the authenticated user is prompted to set up their profile name, prefill the profile name input with exactly \"Alhat Rutuja\" so it can be saved as the user’s profile name in the app.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-new-mood-music-section-to-the-react-app-that-lets-the-user-pick-a-mood-and-then-browse-and-play-a-list-of-music-tracks-for-that-mood-with-an-explicit-option-to-view-play-the-latest-tracks-first",
+      "title": "Add a new \"Mood Music\" section to the React app that lets the user pick a mood and then browse and play a list of music tracks for that mood, with an explicit option to view/play the latest tracks first.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-bundle-a-small-local-music-catalog-in-the-frontend-no-external-streaming-and-use-it-as-the-source-for-mood-based-playback-including-metadata-needed-to-support-a-latest-sort-e-g-release-date-or-added-date",
+      "title": "Bundle a small, local music catalog in the frontend (no external streaming) and use it as the source for mood-based playback, including metadata needed to support a \"Latest\" sort (e.g., release date or added date).",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-app-header-branding-and-labels-to-reflect-the-mood-based-music-experience-while-keeping-existing-authentication-profile-flows-intact",
+      "title": "Update the app header branding and labels to reflect the Mood Based Music experience (while keeping existing authentication/profile flows intact).",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-the-mood-music-ui-uses-the-existing-tailwind-shadcn-design-system-and-is-consistent-with-the-current-theme-variables-avoid-introducing-blue-purple-as-primary-brand-colors",
+      "title": "Ensure the Mood Music UI uses the existing Tailwind/Shadcn design system and is consistent with the current theme variables (avoid introducing blue/purple as primary brand colors).",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-short-in-app-info-notice-specific-to-mood-music-clarifying-that-music-playback-uses-bundled-local-audio-files-not-external-music-services-keeping-all-copy-in-english",
+      "title": "Add a short in-app info notice specific to Mood Music clarifying that music playback uses bundled/local audio files (not external music services), keeping all copy in English.",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-render-newly-generated-mood-icon-images-as-static-assets-and-use-them-in-the-mood-music-ui-e-g-on-mood-selector-cards-buttons",
+      "title": "Render newly generated mood icon images as static assets and use them in the Mood Music UI (e.g., on mood selector cards/buttons).",
+      "reqIds": [
+        "REQ-14"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "React frontend that can record audio from any device (browser-based recording) and send it to backend",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Node.js backend API to receive uploaded/recorded audio and handle transcription + TTS requests",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Speech-to-text (transcription) integration using Google Gemini API",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Text-to-speech feature using a non-Gemini external TTS API",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "Add a Motoko backend canister API to store and retrieve a user’s transcription history (e.g., timestamp + transcript text) keyed to the authenticated Internet Identity principal.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-9",
+      "summary": "Allow setting/displaying the user’s profile name in the app (set to “Alhat Rutuja”)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-10",
+      "summary": "Create a mood-based music app that selects and plays music based on the user’s mood (including support for playing the latest music).",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Mood Based Music app",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

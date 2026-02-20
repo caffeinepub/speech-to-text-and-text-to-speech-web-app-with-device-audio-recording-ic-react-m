@@ -1,2 +1,3 @@
-# speech-to-text-and-text-to-speech-web-app-with-device-audio-recording-ic-react-m
-Exported from Caffeine project: Speech-to-text and text-to-speech web app with device audio recording (IC React+Motoko)
+## 
+
+To run app build and run docker image: `docker build -t app . docker run -it --network host app`

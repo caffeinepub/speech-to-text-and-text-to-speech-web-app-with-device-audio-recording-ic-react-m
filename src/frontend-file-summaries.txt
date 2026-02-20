@@ -1,0 +1,22 @@
+{
+  "frontend/src/App.tsx": "Main application component with tabbed interface including Mood Music, audio recording, speech-to-text transcription, text-to-speech playback, and transcript history management with Internet Identity authentication and updated branding for Mood Based Music.",
+  "frontend/src/hooks/useQueries.ts": "React Query hooks for managing user profiles and transcript history operations with the backend canister, including immediate cache updates after profile save for instant UI feedback.",
+  "frontend/src/components/auth/LoginButton.tsx": "Authentication button component that handles Internet Identity login/logout with proper state management and query cache clearing.",
+  "frontend/src/components/auth/ProfileSetupDialog.tsx": "Modal dialog for first-time user profile setup that pre-populates the name input with \"Alhat Rutuja\" and displays Mood Based Music branding in the welcome message.",
+  "frontend/src/features/audio/AudioRecorder.tsx": "Browser-based audio recording component with start/pause/resume/stop controls, elapsed timer, and playback preview using MediaRecorder API.",
+  "frontend/src/features/stt/useSpeechRecognition.ts": "React hook wrapping browser-native Web Speech API for speech recognition with interim and final transcript support.",
+  "frontend/src/features/stt/TranscriptionPanel.tsx": "Speech-to-text interface with live transcription display, editable transcript field, and browser compatibility detection.",
+  "frontend/src/features/tts/useSpeechSynthesis.ts": "React hook wrapping browser-native SpeechSynthesis API for text-to-speech with voice selection and rate control.",
+  "frontend/src/features/tts/TextToSpeechPanel.tsx": "Text-to-speech interface with voice selection, speaking rate adjustment, and playback controls.",
+  "frontend/src/features/history/HistoryPanel.tsx": "Transcript history management panel for authenticated users to save and load previous transcripts.",
+  "frontend/src/components/InfoNotice.tsx": "Informational alert explaining that the app uses browser-native speech capabilities without external APIs.",
+  "frontend/src/index.css": "Global styles with OKLCH color system using a teal/cyan primary palette (avoiding blue/purple) for both light and dark modes.",
+  "frontend/tailwind.config.js": "Tailwind configuration with custom color tokens, Inter and JetBrains Mono fonts, and extended theme utilities.",
+  "frontend/src/features/mood-music/types.ts": "TypeScript type definitions for Mood, SortMode, and Track interfaces used throughout the Mood Music feature.",
+  "frontend/src/features/mood-music/catalog.ts": "Local music catalog metadata containing 8 sample tracks with titles, artists, mood tags, dates, and static asset URLs for the Mood Music feature.",
+  "frontend/src/features/mood-music/useAudioPlayer.ts": "React hook managing audio playback state using HTMLAudioElement API with play/pause/seek controls and track switching functionality.",
+  "frontend/src/features/mood-music/components/MoodSelector.tsx": "Mood selection UI component displaying four mood cards (Happy, Calm, Sad, Energetic) with icons and interactive selection highlighting.",
+  "frontend/src/features/mood-music/components/TrackList.tsx": "Presentational component rendering filtered tracks with play/pause buttons, track metadata, and mood badges with current track highlighting.",
+  "frontend/src/features/mood-music/components/MoodMusicInfoNotice.tsx": "Informational alert component explaining that Mood Music uses app-bundled audio files without external streaming services.",
+  "frontend/src/features/mood-music/MoodMusicPanel.tsx": "Main Mood Music panel component integrating mood selection, track filtering, latest sorting, track list display, and sticky now-playing audio player with progress slider."
+}

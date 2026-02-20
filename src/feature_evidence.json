@@ -1,0 +1,128 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-add-a-new-mood-music-section-to-the-react-app-that-lets-the-user-pick-a-mood-and-then-browse-and-play-a-list-of-music-tracks-for-that-mood-with-an-explicit-option-to-view-play-the-latest-tracks-first",
+      "featureTitle": "Add a new \"Mood Music\" section to the React app that lets the user pick a mood and then browse and play a list of music tracks for that mood, with an explicit option to view/play the latest tracks first.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/features/mood-music/MoodMusicPanel.tsx",
+        "frontend/src/features/mood-music/components/MoodSelector.tsx",
+        "frontend/src/features/mood-music/components/TrackList.tsx",
+        "frontend/src/features/mood-music/useAudioPlayer.ts"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-9"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-bundle-a-small-local-music-catalog-in-the-frontend-no-external-streaming-and-use-it-as-the-source-for-mood-based-playback-including-metadata-needed-to-support-a-latest-sort-e-g-release-date-or-added-date",
+      "featureTitle": "Bundle a small, local music catalog in the frontend (no external streaming) and use it as the source for mood-based playback, including metadata needed to support a \"Latest\" sort (e.g., release date or added date).",
+      "files": [
+        "frontend/src/features/mood-music/catalog.ts",
+        "frontend/src/features/mood-music/types.ts"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-10"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-update-the-app-header-branding-and-labels-to-reflect-the-mood-based-music-experience-while-keeping-existing-authentication-profile-flows-intact",
+      "featureTitle": "Update the app header branding and labels to reflect the Mood Based Music experience (while keeping existing authentication/profile flows intact).",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/auth/ProfileSetupDialog.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-11"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-ensure-the-mood-music-ui-uses-the-existing-tailwind-shadcn-design-system-and-is-consistent-with-the-current-theme-variables-avoid-introducing-blue-purple-as-primary-brand-colors",
+      "featureTitle": "Ensure the Mood Music UI uses the existing Tailwind/Shadcn design system and is consistent with the current theme variables (avoid introducing blue/purple as primary brand colors).",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/features/mood-music/MoodMusicPanel.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-12"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-short-in-app-info-notice-specific-to-mood-music-clarifying-that-music-playback-uses-bundled-local-audio-files-not-external-music-services-keeping-all-copy-in-english",
+      "featureTitle": "Add a short in-app info notice specific to Mood Music clarifying that music playback uses bundled/local audio files (not external music services), keeping all copy in English.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/features/mood-music/MoodMusicPanel.tsx",
+        "frontend/src/features/mood-music/components/MoodMusicInfoNotice.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-13"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-render-newly-generated-mood-icon-images-as-static-assets-and-use-them-in-the-mood-music-ui-e-g-on-mood-selector-cards-buttons",
+      "featureTitle": "Render newly generated mood icon images as static assets and use them in the Mood Music UI (e.g., on mood selector cards/buttons).",
+      "files": [
+        "frontend/src/features/mood-music/components/MoodSelector.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-14"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

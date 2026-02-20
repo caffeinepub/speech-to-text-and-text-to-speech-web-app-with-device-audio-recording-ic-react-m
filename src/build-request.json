@@ -1,0 +1,144 @@
+{
+  "kind": "build_request",
+  "title": "Add Mood-Based Music feature that plays latest tracks by mood",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-9",
+      "text": "Add a new \"Mood Music\" section to the React app that lets the user pick a mood and then browse and play a list of music tracks for that mood, with an explicit option to view/play the latest tracks first.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "create Mood Based Music  app play music  lates"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The app UI includes a clearly labeled entry point for \"Mood Music\" (e.g., a new tab alongside existing tabs).",
+        "The user can select a mood (at minimum: Happy, Calm, Sad, Energetic) and see a track list update based on the selected mood.",
+        "The user can play/pause a selected track using standard in-browser audio playback controls.",
+        "A \"Latest\" mode exists that sorts/shows tracks with newest first (based on track metadata provided by the app).",
+        "All user-facing text in this feature is in English."
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "text": "Bundle a small, local music catalog in the frontend (no external streaming) and use it as the source for mood-based playback, including metadata needed to support a \"Latest\" sort (e.g., release date or added date).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "create Mood Based Music  app play music  lates"
+        ]
+      },
+      "acceptanceCriteria": [
+        "At least 8 sample tracks are available across the moods (can be shared across moods), stored as static assets under the frontend public directory (e.g., frontend/public/assets/music).",
+        "Each track displayed in the UI includes at minimum: title, artist (or \"Unknown Artist\"), mood tags, and a date field used for \"Latest\" ordering.",
+        "No third-party music APIs are required for the feature to function."
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "text": "Update the app header branding and labels to reflect the Mood Based Music experience (while keeping existing authentication/profile flows intact).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "create Mood Based Music  app play music  lates"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The app title and subtitle shown in the header are updated to match the mood-based music focus (English text).",
+        "Internet Identity login/logout still works via the existing LoginButton, without modifying any immutable hook files.",
+        "If the user is authenticated and has a profile, the header still greets the user by name as it does today."
+      ]
+    },
+    {
+      "id": "REQ-12",
+      "text": "Ensure the Mood Music UI uses the existing Tailwind/Shadcn design system and is consistent with the current theme variables (avoid introducing blue/purple as primary brand colors).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "create Mood Based Music  app play music  lates"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Mood Music components use existing Shadcn UI components (e.g., Card, Button, Tabs) and existing theme tokens from CSS variables.",
+        "No new primary branding is introduced that relies on blue/purple as the dominant color."
+      ]
+    },
+    {
+      "id": "REQ-13",
+      "text": "Add a short in-app info notice specific to Mood Music clarifying that music playback uses bundled/local audio files (not external music services), keeping all copy in English.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "create Mood Based Music  app play music  lates"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The Mood Music section includes an English info note stating that playback is from app-bundled audio files and does not use external streaming services.",
+        "The existing speech InfoNotice remains accurate and is not removed (it may be repositioned if needed)."
+      ]
+    },
+    {
+      "id": "REQ-14",
+      "text": "Render newly generated mood icon images as static assets and use them in the Mood Music UI (e.g., on mood selector cards/buttons).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "create Mood Based Music  app play music  lates"
+        ]
+      },
+      "acceptanceCriteria": [
+        "All images listed in imageRequirements.required are checked into frontend/public/assets/generated.",
+        "Mood selection UI visually displays the corresponding mood icon next to the mood label.",
+        "Icons render crisply on common screen densities and do not appear stretched (correct aspect ratio preserved)."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not modify any files under frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, or any sources under frontend/src/components/ui (compose them instead).",
+    "Keep all backend logic in the single Motoko actor in backend/main.mo; add backend/migration.mo only if state schema changes are required.",
+    "All user-facing copy must be in English."
+  ],
+  "nonGoals": [
+    "Integrating with external music streaming providers (Spotify/Apple Music/YouTube) or requiring external music APIs.",
+    "Implementing real-time features (e.g., shared listening sessions, chat, WebSockets).",
+    "Implementing paid subscriptions or payments for music content."
+  ],
+  "imageRequirements": {
+    "required": [
+      "Flat vector mood icon: happy face with sun motif, warm colors (mood-happy.dim_256x256.png)",
+      "Flat vector mood icon: calm face with crescent moon/cloud motif, soft neutral/teal colors (mood-calm.dim_256x256.png)",
+      "Flat vector mood icon: sad face with raindrop motif, muted colors (mood-sad.dim_256x256.png)",
+      "Flat vector mood icon: energetic face with lightning motif, bold warm colors (mood-energetic.dim_256x256.png)"
+    ],
+    "edits": []
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
+  }
+}

@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 7,
+  "projectStateVersion": 9,
   "summary": "Shift focus to creating a Mood Based Music app that plays music based on the user’s mood (with an emphasis on playing the latest music).",
   "architectural_notes": [
     "Frontend: React web client for audio capture and UX",
@@ -8,9 +8,10 @@
     "STT provider: Google Gemini API for speech-to-text",
     "TTS provider: separate external API for text-to-speech"
   ],
-  "known_issues": [],
-  "isFixRequest": false,
-  "imageRequirements": "## Required Images\n- Flat vector mood icon: happy face with sun motif, warm colors (mood-happy.dim_256x256.png)\n- Flat vector mood icon: calm face with crescent moon/cloud motif, soft neutral/teal colors (mood-calm.dim_256x256.png)\n- Flat vector mood icon: sad face with raindrop motif, muted colors (mood-sad.dim_256x256.png)\n- Flat vector mood icon: energetic face with lightning motif, bold warm colors (mood-energetic.dim_256x256.png)",
+  "known_issues": [
+    "Play song sound/audio is not visible or playing in the UI"
+  ],
+  "isFixRequest": true,
   "existing_features": [
     {
       "id": "feature-implement-in-browser-audio-recording-from-the-user-s-current-device-microphone-desktop-laptop-mobile-using-standard-browser-media-apis-including-controls-to-start-pause-resume-if-supported-stop-and-preview-playback-of-the-recorded-audio-before-submission",
@@ -113,6 +114,30 @@
       "title": "Render newly generated mood icon images as static assets and use them in the Mood Music UI (e.g., on mood selector cards/buttons).",
       "reqIds": [
         "REQ-14"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-debug-and-fix-the-audio-playback-issue-in-the-mood-music-feature-so-that-when-a-user-clicks-play-on-a-track-the-sound-actually-plays-audibly-through-the-device-speakers-headphones",
+      "title": "Debug and fix the audio playback issue in the Mood Music feature so that when a user clicks play on a track, the sound actually plays audibly through the device speakers/headphones.",
+      "reqIds": [
+        "REQ-15"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-verify-that-all-audio-file-urls-in-the-mood-music-catalog-frontend-src-features-mood-music-catalog-ts-point-to-valid-accessible-audio-files-in-the-frontend-public-directory",
+      "title": "Verify that all audio file URLs in the mood music catalog (frontend/src/features/mood-music/catalog.ts) point to valid, accessible audio files in the frontend/public directory.",
+      "reqIds": [
+        "REQ-16"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-the-useaudioplayer-hook-frontend-src-features-mood-music-useaudioplayer-ts-correctly-instantiates-and-manages-the-html-audio-element-including-proper-error-handling-for-loading-failures",
+      "title": "Ensure the useAudioPlayer hook (frontend/src/features/mood-music/useAudioPlayer.ts) correctly instantiates and manages the HTML Audio element, including proper error handling for loading failures.",
+      "reqIds": [
+        "REQ-17"
       ],
       "version": 1
     }

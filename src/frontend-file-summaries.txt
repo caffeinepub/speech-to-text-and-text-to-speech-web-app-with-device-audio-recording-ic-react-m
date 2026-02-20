@@ -13,10 +13,10 @@
   "frontend/src/index.css": "Global styles with OKLCH color system using a teal/cyan primary palette (avoiding blue/purple) for both light and dark modes.",
   "frontend/tailwind.config.js": "Tailwind configuration with custom color tokens, Inter and JetBrains Mono fonts, and extended theme utilities.",
   "frontend/src/features/mood-music/types.ts": "TypeScript type definitions for Mood, SortMode, and Track interfaces used throughout the Mood Music feature.",
-  "frontend/src/features/mood-music/catalog.ts": "Local music catalog metadata containing 8 sample tracks with titles, artists, mood tags, dates, and static asset URLs for the Mood Music feature.",
-  "frontend/src/features/mood-music/useAudioPlayer.ts": "React hook managing audio playback state using HTMLAudioElement API with play/pause/seek controls and track switching functionality.",
+  "frontend/src/features/mood-music/catalog.ts": "Music catalog containing 8 sample tracks with metadata (title, artist, moods, dates) now using publicly accessible SoundHelix demo MP3 URLs for immediate playback testing.",
+  "frontend/src/features/mood-music/useAudioPlayer.ts": "React hook managing audio playback with HTMLAudioElement, including comprehensive error handling, event listeners for all playback states, promise rejection handling for play(), and console logging for debugging audio loading and playback issues.",
   "frontend/src/features/mood-music/components/MoodSelector.tsx": "Mood selection UI component displaying four mood cards (Happy, Calm, Sad, Energetic) with icons and interactive selection highlighting.",
-  "frontend/src/features/mood-music/components/TrackList.tsx": "Presentational component rendering filtered tracks with play/pause buttons, track metadata, and mood badges with current track highlighting.",
-  "frontend/src/features/mood-music/components/MoodMusicInfoNotice.tsx": "Informational alert component explaining that Mood Music uses app-bundled audio files without external streaming services.",
-  "frontend/src/features/mood-music/MoodMusicPanel.tsx": "Main Mood Music panel component integrating mood selection, track filtering, latest sorting, track list display, and sticky now-playing audio player with progress slider."
+  "frontend/src/features/mood-music/components/TrackList.tsx": "Track list component displaying filtered tracks with play/pause controls, mood badges, current track highlighting, and error message display for audio loading failures.",
+  "frontend/src/features/mood-music/components/MoodMusicInfoNotice.tsx": "Informational alert explaining that Mood Music uses sample audio tracks for demonstration with browser-based playback.",
+  "frontend/src/features/mood-music/MoodMusicPanel.tsx": "Main Mood Music panel integrating mood selection, track filtering, sorting, track list with error display, and sticky now-playing mini-player with progress slider and error feedback."
 }

@@ -9,9 +9,10 @@ interface TrackListProps {
   currentTrack: Track | null;
   isPlaying: boolean;
   onTrackToggle: (track: Track) => void;
+  error?: string | null;
 }
 
-export default function TrackList({ tracks, currentTrack, isPlaying, onTrackToggle }: TrackListProps) {
+export default function TrackList({ tracks, currentTrack, isPlaying, onTrackToggle, error }: TrackListProps) {
   if (tracks.length === 0) {
     return (
       <Card>
@@ -24,6 +25,13 @@ export default function TrackList({ tracks, currentTrack, isPlaying, onTrackTogg
 
   return (
     <div className="space-y-3">
+      {error && (
+        <Card className="border-destructive bg-destructive/10">
+          <CardContent className="py-3 text-sm text-destructive">
+            <strong>Playback Error:</strong> {error}
+          </CardContent>
+        </Card>
+      )}
       {tracks.map((track) => {
         const isCurrentTrack = currentTrack?.id === track.id;
         const isCurrentlyPlaying = isCurrentTrack && isPlaying;

@@ -13,7 +13,7 @@ import { Clock, Music } from 'lucide-react';
 export default function MoodMusicPanel() {
   const [selectedMood, setSelectedMood] = useState<Mood>('Happy');
   const [sortMode, setSortMode] = useState<SortMode>('default');
-  const { currentTrack, isPlaying, currentTime, duration, togglePlayPause, seek } = useAudioPlayer();
+  const { currentTrack, isPlaying, currentTime, duration, error, togglePlayPause, seek } = useAudioPlayer();
 
   const filteredTracks = useMemo(() => {
     let tracks = musicCatalog.filter((track) => track.moods.includes(selectedMood));
@@ -64,6 +64,7 @@ export default function MoodMusicPanel() {
           currentTrack={currentTrack}
           isPlaying={isPlaying}
           onTrackToggle={togglePlayPause}
+          error={error}
         />
       </div>
 
@@ -77,6 +78,12 @@ export default function MoodMusicPanel() {
               <p className="font-semibold text-sm truncate">{currentTrack.title}</p>
               <p className="text-xs text-muted-foreground truncate">{currentTrack.artist}</p>
             </div>
+
+            {error && (
+              <div className="text-xs text-destructive bg-destructive/10 p-2 rounded">
+                {error}
+              </div>
+            )}
 
             <div className="space-y-2">
               <Slider
